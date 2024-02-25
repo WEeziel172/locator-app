@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body, html, #root {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+#root {
+  overflow: scroll;
+}
+body {
+  background: url("./assets/images/img.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: scroll;
+}
+
+.header {
+  background: rgba( 51, 110, 190, 0.25 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 5.5px );
+  -webkit-backdrop-filter: blur( 5.5px );
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+.leaflet-layer,
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out,
+.leaflet-control-attribution {
+  filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
+
+.scroll-snap-align-center {
+  scroll-snap-align: center;
+}
+.scroll-type-x-mandatory {
+  scroll-snap-type: x mandatory;
+}
