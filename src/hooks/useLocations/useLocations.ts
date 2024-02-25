@@ -1,7 +1,7 @@
-import SecretService from '../../services/secretService/secretService.ts';
 import { useEffect, useState } from 'react';
-import { EntityLocation } from '../../types/location.ts';
+import { EntityLocation } from '@customTypes//location.ts';
 import { AxiosError } from 'axios';
+import SecretService from '@services/secretService/secretService.ts';
 
 export function useLocations() {
   const [locations, setLocations] = useState<EntityLocation[] | null>(null);

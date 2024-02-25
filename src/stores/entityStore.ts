@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
-import { EntityWithLocation } from '../types/entityWithLocation.ts';
+import { EntityWithLocation } from '@customTypes/entityWithLocation.ts';
 
 interface EntityStoreState {
   currentEntity: EntityWithLocation | null;

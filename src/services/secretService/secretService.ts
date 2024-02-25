@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { ROUTES } from '../../constants.ts';
-import { EntityLocation } from '../../types/location.ts';
+import { ROUTES } from '@constants';
+import { EntityLocation } from '@customTypes/location.ts';
 
 export default class SecretService {
   // 007

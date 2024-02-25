@@ -1,5 +1,5 @@
-import { ROUTES } from '../../constants.ts';
-import { Entity } from '../../types/entity.ts';
+import { ROUTES } from '@constants';
+import { Entity } from '@customTypes/entity.ts';
 import axios from 'axios';
 
 export class EntityService {

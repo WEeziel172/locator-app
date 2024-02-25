@@ -1,16 +1,16 @@
 import { MapContainer, Marker, TileLayer, useMap, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import { useLocations } from '../../hooks/useLocations/useLocations.ts';
 import { useEffect, useMemo, useState } from 'react';
 import { LatLng, LeafletMouseEvent } from 'leaflet';
-import { useEntities } from '../../hooks/useEntities/useEntities.ts';
-import { MAP_CONFIG } from '../../config.ts';
-import { useMapStore } from '../../stores/mapStore.ts';
-import { EntityWithLocation } from '../../types/entityWithLocation.ts';
-import RebelIcon from '../../assets/icons/starwars-rebel.svg';
-import { EntityLocation } from '../../types/location.ts';
+import { useEntities } from '@hooks/useEntities/useEntities.ts';
+import { MAP_CONFIG } from '@config';
+import { useMapStore } from '@stores/mapStore.ts';
+import { EntityWithLocation } from '@customTypes/entityWithLocation.ts';
+import RebelIcon from '@assets//icons/starwars-rebel.svg';
+import { EntityLocation } from '@customTypes/location.ts';
 import Typewriter from 'typewriter-effect';
-import { useEntityStore } from '../../stores/entityStore.ts';
+import { useEntityStore } from '@stores/entityStore.ts';
+import { useLocations } from '@hooks/useLocations/useLocations.ts';
 
 export function EntityCard({
   entity,

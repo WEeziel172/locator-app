@@ -1,9 +1,9 @@
-import { useLocations } from '../useLocations/useLocations.ts';
 import { useMemo, useState } from 'react';
-import { EntityService } from '../../services/apiService/entityService.ts';
-import { EntityLocation } from '../../types/location.ts';
-import { EntityWithLocation } from '../../types/entityWithLocation.ts';
+import { EntityService } from '@services/apiService/entityService.ts';
+import { EntityLocation } from '@customTypes//location.ts';
+import { EntityWithLocation } from '@customTypes/entityWithLocation.ts';
 import { AxiosError } from 'axios';
+import { useLocations } from '@hooks/useLocations/useLocations.ts';
 
 export function useEntities() {
   const entityService = new EntityService();
