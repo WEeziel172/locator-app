@@ -2,24 +2,32 @@ import { useMapStore } from '@stores/mapStore.ts';
 import { useEntityStore } from '@stores/entityStore.ts';
 import { useEntities } from '@hooks/useEntities/useEntities.ts';
 import { EntityWithLocation } from '@customTypes/entityWithLocation.ts';
-import { useEffect, useMemo, useRef } from 'react';
+import { useMemo, useRef } from 'react';
 import { EntityCard } from '@components/entityCard/entityCard.tsx';
 import TargetingScope from '@assets/icons/noun-targeting-scope-691189.svg';
 
 export function EntityList() {
-  const { userLocation, map } = useMapStore();
-  const { setEntity, currentEntity, setEntities } = useEntityStore();
+  const { userLocation, map } = useMapStore((state) => ({
+    userLocation: state.userLocation,
+    map: state.map,
+  }));
+  const { setEntity, currentEntity, setEntities } = useEntityStore((state) => ({
+    setEntity: state.setEntity,
+    currentEntity: state.currentEntity,
+    setEntities: state.setEntities,
+  }));
   const { entities, loading, error } = useEntities({
     onSuccess: (d) => setEntities(d),
   });
   const listRef = useRef(null);
 
-  useEffect(() => {
+  useMemo(() => {
     if (listRef.current && currentEntity) {
       const itemIndex = entities?.findIndex((x) => x.id === currentEntity.id);
       if (!itemIndex) return;
 
-      //@ts-ignore
+      //@ts-expect-error
+      // Cant access all properties
       listRef.current?.children?.item(itemIndex).scrollIntoView({
         behavior: 'auto',
         block: 'center',

@@ -1,10 +1,9 @@
-import { Marker, useMap } from 'react-leaflet';
+import { Marker } from 'react-leaflet';
 import { useLocations } from '@hooks/useLocations/useLocations.ts';
 import { EntityLocation } from '@customTypes/location.ts';
 import { useMemo } from 'react';
 
 export function EntityMarkers({ onClick }: { onClick: (id: number) => void }) {
-  const map = useMap();
   const { locations } = useLocations();
 
   function handleOnClick(loc: EntityLocation) {

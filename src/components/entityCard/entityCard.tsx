@@ -20,6 +20,7 @@ export function EntityCard({
       selected={selected}
       onClick={onClick}
       image={entity.image}
+      imageClassName={'object-contain h-full w-full'}
       className={`bg-[#1f74c12b] border-[1px] border-opacity-10 rounded-l w-72 sm:w-64 md:w-80 lg:w-64 border-2 border-blue-100 cursor-pointer hover:scale-105 transition-all scroll-snap-align-center ${selectedStyles}`}
       details={[
         <dl key={entity.id} className={'p-4'}>

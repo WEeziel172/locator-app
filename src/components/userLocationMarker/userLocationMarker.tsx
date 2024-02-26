@@ -4,7 +4,9 @@ import { LatLng, LeafletMouseEvent } from 'leaflet';
 import { Marker, useMapEvents } from 'react-leaflet';
 
 export function UserLocationMarker() {
-  const { setUserLocation } = useMapStore();
+  const { setUserLocation } = useMapStore((state) => ({
+    setUserLocation: state.setUserLocation,
+  }));
   const [position, setPosition] = useState<LatLng | null>(null);
 
   function handleSetPosition(e: LeafletMouseEvent) {

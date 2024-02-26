@@ -36,20 +36,20 @@ export function useEntities(options?: UseEntitiesParams) {
   useEffect(() => {
     if (!locations) return;
     try {
-      setLoading(true);
-      getEntities(locations).then((d) => {
+      setLoading(() => true);
+      void getEntities(locations).then((d) => {
         setEntities(d!);
         if (options?.onSuccess) {
           options?.onSuccess(d!);
         }
       });
     } catch (err) {
-      setError(err as AxiosError);
+      setError(() => err as AxiosError);
       if (options?.onError) {
         options?.onError(err as AxiosError);
       }
     } finally {
-      setLoading(false);
+      setLoading(() => false);
       if (options?.onCompleted) {
         options?.onCompleted();
       }

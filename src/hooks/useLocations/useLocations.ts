@@ -11,14 +11,14 @@ export function useLocations() {
 
   useEffect(() => {
     try {
-      setLoading(true);
-      secretService.exposeSecretLocations().then((secretLocations) => {
+      setLoading(() => true);
+      void secretService.exposeSecretLocations().then((secretLocations) => {
         setLocations(secretLocations);
       });
     } catch (err) {
-      setError(err as AxiosError);
+      setError(() => err as AxiosError);
     } finally {
-      setLoading(false);
+      setLoading(() => false);
     }
 
     return () => setLocations(null);

@@ -5,7 +5,9 @@ import { DescriptionItem } from '@components/descriptionItem/descriptionItem.tsx
 
 export function EntityModal() {
   const [show, setShow] = useState<boolean>(false);
-  const { currentEntity } = useEntityStore();
+  const { currentEntity } = useEntityStore((state) => ({
+    currentEntity: state.currentEntity,
+  }));
 
   useEffect(() => {
     if (currentEntity) {

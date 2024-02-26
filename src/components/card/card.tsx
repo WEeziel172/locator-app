@@ -2,6 +2,7 @@ export function Card({
   image,
   details,
   className,
+  imageClassName,
   onClick,
   selected,
 }: {
@@ -10,11 +11,12 @@ export function Card({
   className: string;
   onClick?: (e?: any) => void;
   selected: boolean;
+  imageClassName?: string;
 }) {
   return (
     <div onClick={onClick} className={className}>
       <div className={'w-full h-52'}>
-        <img loading={'lazy'} src={image} className={'object-contain h-full w-full'} />
+        <img loading={'lazy'} src={image} className={imageClassName} />
       </div>
       <div>{details}</div>
     </div>

@@ -2,7 +2,9 @@ import { useMapStore } from '@stores/mapStore.ts';
 import Typewriter from 'typewriter-effect';
 
 export function Instructions() {
-  const { userLocation } = useMapStore();
+  const { userLocation } = useMapStore((state) => ({
+    userLocation: state.userLocation,
+  }));
 
   if (userLocation) return <></>;
 
