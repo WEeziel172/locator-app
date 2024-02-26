@@ -5,6 +5,7 @@ import { useCallback, useMemo } from 'react';
 import L from 'leaflet';
 import Droid from '@assets/icons/Star_Wars_BB8.svg';
 import DroidRed from '@assets/icons/Star_Wars_BB8_red.svg';
+import { useEntityStore } from '@stores/entityStore.ts';
 
 const icon = L.icon({
   iconUrl: Droid,
@@ -20,25 +21,25 @@ const iconRed = L.icon({
   popupAnchor: [-3, -76], // point from which the popup should open relative to the iconAnchor
 });
 
-export function EntityMarkers({
-  onClick,
-  currentSelected,
-}: {
-  onClick: (id: number) => void;
-  currentSelected: number | null;
-}) {
+export function EntityMarkers({ onClick }: { onClick: (id: number) => void }) {
   const { locations } = useLocations();
+  const { currentEntity } = useEntityStore((state) => ({
+    currentEntity: state.currentEntity,
+  }));
 
-  const handleOnClick = useCallback((loc: EntityLocation) => {
-    onClick(loc.id);
-  }, []);
+  const handleOnClick = useCallback(
+    (loc: EntityLocation) => {
+      onClick(loc.id);
+    },
+    [onClick],
+  );
 
   const markers = useMemo(() => {
     if (!locations) return [];
     return locations.map((loc) => {
       return (
         <Marker
-          icon={currentSelected === loc.id ? iconRed : icon}
+          icon={currentEntity?.id === loc.id ? iconRed : icon}
           eventHandlers={{
             click: () => handleOnClick(loc),
           }}
@@ -47,7 +48,7 @@ export function EntityMarkers({
         ></Marker>
       );
     });
-  }, [locations, currentSelected]);
+  }, [locations, currentEntity, handleOnClick]);
 
   if (!locations) return <></>;
 

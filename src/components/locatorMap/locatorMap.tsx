@@ -4,29 +4,23 @@ import { UserLocationMarker } from '@components/userLocationMarker/userLocationM
 import { EntityMarkers } from '@components/entityMarkers/entityMarkers.tsx';
 import { MapInstanceController } from '@components/mapInstanceController/mapInstanceController.tsx';
 import { useEntityStore } from '@stores/entityStore.ts';
-import { useMemo, useState } from 'react';
+import { useCallback } from 'react';
 
 export function LocatorMap() {
-  const { entities, setEntity, currentEntity } = useEntityStore((state) => ({
+  const { entities, setEntity } = useEntityStore((state) => ({
     entities: state.entities,
     setEntity: state.setEntity,
-    currentEntity: state.currentEntity,
   }));
 
-  const [currentSelectedMarker, setCurrentSelectedMarker] = useState<number | null>(null);
-
-  function handleOnClickMarker(id: number) {
-    setCurrentSelectedMarker(id);
-  }
-
-  useMemo(() => {
-    if (currentSelectedMarker && entities) {
-      const entity = entities?.find((x) => x.id === currentSelectedMarker);
+  const handleOnClickMarker = useCallback(
+    (id: number) => {
+      const entity = entities?.find((x) => x.id === id);
       if (!entity) return;
 
       setEntity(entity);
-    }
-  }, [currentSelectedMarker, entities]);
+    },
+    [entities],
+  );
 
   return (
     <MapContainer
@@ -38,7 +32,7 @@ export function LocatorMap() {
     >
       <MapInstanceController />
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      <EntityMarkers currentSelected={currentEntity?.id ?? null} onClick={handleOnClickMarker} />
+      <EntityMarkers onClick={handleOnClickMarker} />
       <UserLocationMarker />
     </MapContainer>
   );
