@@ -2,7 +2,7 @@ import { useMapStore } from '@stores/mapStore.ts';
 import { useEntityStore } from '@stores/entityStore.ts';
 import { useEntities } from '@hooks/useEntities/useEntities.ts';
 import { EntityWithLocation } from '@customTypes/entityWithLocation.ts';
-import { useMemo, useRef } from 'react';
+import { useCallback, useMemo, useRef } from 'react';
 import { EntityCard } from '@components/entityCard/entityCard.tsx';
 import TargetingScope from '@assets/icons/noun-targeting-scope-691189.svg';
 
@@ -55,11 +55,14 @@ export function EntityList() {
     return aDistance - bDistance;
   }
 
-  function handleOnClick(e: EntityWithLocation) {
-    if (!map) return;
-    map.flyTo([e.lat, e.lng], 12);
-    setEntity(e);
-  }
+  const handleOnClick = useCallback(
+    (e: EntityWithLocation) => {
+      if (!map) return;
+      map.flyTo([e.lat, e.lng], 12);
+      setEntity(e);
+    },
+    [map],
+  );
 
   const entitiesList = useMemo(() => {
     if (!entities) return [];

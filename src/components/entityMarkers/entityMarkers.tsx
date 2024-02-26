@@ -1,14 +1,14 @@
 import { Marker } from 'react-leaflet';
 import { useLocations } from '@hooks/useLocations/useLocations.ts';
 import { EntityLocation } from '@customTypes/location.ts';
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 
 export function EntityMarkers({ onClick }: { onClick: (id: number) => void }) {
   const { locations } = useLocations();
 
-  function handleOnClick(loc: EntityLocation) {
+  const handleOnClick = useCallback((loc: EntityLocation) => {
     onClick(loc.id);
-  }
+  }, []);
 
   const markers = useMemo(() => {
     if (!locations) return [];

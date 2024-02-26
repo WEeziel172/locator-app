@@ -4,7 +4,7 @@ import { UserLocationMarker } from '@components/userLocationMarker/userLocationM
 import { EntityMarkers } from '@components/entityMarkers/entityMarkers.tsx';
 import { MapInstanceController } from '@components/mapInstanceController/mapInstanceController.tsx';
 import { useEntityStore } from '@stores/entityStore.ts';
-import { useEffect, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 export function LocatorMap() {
   const { entities, setEntity } = useEntityStore((state) => ({
@@ -18,7 +18,7 @@ export function LocatorMap() {
     setCurrentSelectedMarker(id);
   }
 
-  useEffect(() => {
+  useMemo(() => {
     if (currentSelectedMarker && entities) {
       const entity = entities?.find((x) => x.id === currentSelectedMarker);
       if (!entity) return;

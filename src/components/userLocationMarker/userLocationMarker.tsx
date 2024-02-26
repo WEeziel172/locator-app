@@ -1,5 +1,5 @@
 import { useMapStore } from '@stores/mapStore.ts';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { LatLng, LeafletMouseEvent } from 'leaflet';
 import { Marker, useMapEvents } from 'react-leaflet';
 
@@ -9,11 +9,11 @@ export function UserLocationMarker() {
   }));
   const [position, setPosition] = useState<LatLng | null>(null);
 
-  function handleSetPosition(e: LeafletMouseEvent) {
+  const handleSetPosition = useCallback((e: LeafletMouseEvent) => {
     const { lat, lng } = e.latlng;
     setPosition(e.latlng);
     setUserLocation({ lat, lng });
-  }
+  }, []);
 
   useMapEvents({
     click(e) {
