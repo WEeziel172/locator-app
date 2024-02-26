@@ -39,3 +39,5 @@ export function EntityModal() {
     </div>
   );
 }
+
+export default EntityModal;

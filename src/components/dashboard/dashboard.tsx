@@ -8,3 +8,5 @@ export function Dashboard() {
 
   return <div className={'h-full sm:h-[100%] border-t-[1px] border-[#ffffff2e]'}>{userLocation && <EntityList />}</div>;
 }
+
+export default Dashboard;

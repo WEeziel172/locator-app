@@ -5,9 +5,11 @@ import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import L from 'leaflet';
 import { LocatorMap } from '@components/locatorMap/locatorMap.tsx';
 import { Header } from '@components/header/header.tsx';
-import { Dashboard } from '@components/dashboard/dashboard.tsx';
-import { Instructions } from '@components/instructions/instructions.tsx';
-import { EntityModal } from '@components/entityModal/entityModal.tsx';
+import React, { lazy, Suspense } from 'react';
+
+const Dashboard = lazy(() => import('@components/dashboard/dashboard.tsx'));
+const EntityModal = lazy(() => import('@components/entityModal/entityModal.tsx'));
+const Instructions = lazy(() => import('@components/instructions/instructions.tsx'));
 
 // In production build, leaflet assets are not reference correctly by react leaflet
 // By setting them explicitly, they will always be reference correctly when building for production
@@ -25,10 +27,16 @@ export function Home() {
     <>
       <Header />
       <main>
-        <Instructions />
+        <Suspense fallback={<></>}>
+          <Instructions />
+        </Suspense>
         <LocatorMap />
-        <Dashboard />
-        <EntityModal />
+        <Suspense fallback={<>Loading...</>}>
+          <Dashboard />
+        </Suspense>
+        <Suspense fallback={<>Loading...</>}>
+          <EntityModal />
+        </Suspense>
       </main>
     </>
   );

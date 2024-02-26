@@ -90,7 +90,7 @@ export function EntityList() {
     <div
       ref={listRef}
       className={
-        'grid grid-flow-row grid-flow-col grid-rows-1 gap-2 sm:overflow-x-scroll overflow-y-scroll scroll-smooth h-full p-4 w-full scroll-type-x-mandatory'
+        'grid grid-flow-col grid-rows-1 gap-2 sm:overflow-x-scroll overflow-y-scroll scroll-smooth h-full p-4 w-full scroll-type-x-mandatory'
       }
     >
       {entitiesList}
