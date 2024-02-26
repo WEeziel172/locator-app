@@ -1,8 +1,10 @@
 import { useMapStore } from '@stores/mapStore.ts';
 import Typewriter from 'typewriter-effect';
 import { useEntityStore } from '@stores/entityStore.ts';
+import { useTranslation } from 'react-i18next';
 
 export function Instructions() {
+  const { t } = useTranslation();
   const { userLocation } = useMapStore((state) => ({
     userLocation: state.userLocation,
   }));
@@ -11,6 +13,7 @@ export function Instructions() {
   }));
 
   if (userLocation && currentEntity) return null;
+
   if (userLocation && !currentEntity) {
     return (
       <div className={'flex justify-center items-center absolute top-[7rem] w-full h-40'}>
@@ -18,10 +21,7 @@ export function Instructions() {
           <Typewriter
             options={{
               delay: 35,
-              strings: [
-                'You can click on a marker on the map to reveal the entity.',
-                'You can also click the entity cards to reveal details and fly to destination',
-              ],
+              strings: [t('instructions.additional')],
               autoStart: true,
               loop: false,
               deleteSpeed: 9999999999999,
@@ -38,7 +38,7 @@ export function Instructions() {
         <Typewriter
           options={{
             delay: 35,
-            strings: ['Click on a position on the map to reveal detailed information'],
+            strings: [t('instructions.how_to_start')],
             autoStart: true,
             loop: false,
             deleteSpeed: 9999999999999,

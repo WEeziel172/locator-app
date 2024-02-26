@@ -1,3 +1,15 @@
 {
-  "header": "Rebel Locator app"
+  "header": "Rebel Locator app",
+  "instructions": {
+    "how_to_start": "Click on a position on the map to reveal detailed information",
+    "additional": "You can click on a marker on the map to reveal the entity. You can also click the entity cards to reveal details and fly to destination"
+  },
+  "entity": {
+    "name": "Name",
+    "species": "Species",
+    "born": "Born",
+    "homeworld": "Homeworld",
+    "cybergenetics": "Cybergenetics",
+    "height": "Height"
+  }
 }

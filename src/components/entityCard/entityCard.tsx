@@ -2,6 +2,7 @@ import { EntityWithLocation } from '@customTypes/entityWithLocation.ts';
 
 import { Card } from '@components/card/card.tsx';
 import { DescriptionItem } from '@components/descriptionItem/descriptionItem.tsx';
+import { useTranslation } from 'react-i18next';
 
 export function EntityCard({
   entity,
@@ -14,6 +15,7 @@ export function EntityCard({
   onClick: (e: MouseEvent) => void;
   selected: boolean;
 }) {
+  const { t } = useTranslation();
   const selectedStyles = selected ? 'shadow-[0px_0px_25px_rgb(34,178,79,0.5)] scale-105 ' : '';
 
   return (
@@ -22,7 +24,7 @@ export function EntityCard({
       onClick={onClick}
       image={entity.image}
       imageClassName={'object-cover h-full w-full'}
-      className={`bg-[#1f74c12b] border-[1px] border-opacity-10 rounded-l w-72 sm:w-64 md:w-80 lg:w-64 border-2 border-blue-100 cursor-pointer hover:scale-105 transition-all scroll-snap-align-center ${selectedStyles} relative`}
+      className={`bg-[#1f74c12b] border-[1px] border-opacity-10 rounded-l w-72 sm:w-64 md:w-80 lg:w-64 border-blue-100 cursor-pointer hover:scale-105 transition-all scroll-snap-align-center ${selectedStyles} relative`}
       details={[
         <dl
           data-testid={'description-list'}
@@ -35,10 +37,10 @@ export function EntityCard({
           <dd className={'text-amber-50'}>{distance} km</dd>
           {selected && (
             <div className={'text-amber-50 mt-2'}>
-              <DescriptionItem title={'Born'} description={entity.born} />
-              <DescriptionItem title={'Homeworld'} description={entity.homeworld || 'unknown'} />
-              <DescriptionItem title={'Cybernetics'} description={entity.cybernetics || 'unknown'} />
-              <DescriptionItem title={'Height'} description={entity.height || 'unknown'} />
+              <DescriptionItem title={t('entity.born')} description={entity.born} />
+              <DescriptionItem title={t('entity.homeworld')} description={entity.homeworld || 'unknown'} />
+              <DescriptionItem title={t('entity.cybergenetics')} description={entity.cybernetics || 'unknown'} />
+              <DescriptionItem title={t('entity.height')} description={entity.height || 'unknown'} />
             </div>
           )}
         </dl>,
