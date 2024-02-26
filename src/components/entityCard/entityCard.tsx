@@ -1,6 +1,7 @@
 import { EntityWithLocation } from '@customTypes/entityWithLocation.ts';
 
 import { Card } from '@components/card/card.tsx';
+import { DescriptionItem } from '@components/descriptionItem/descriptionItem.tsx';
 
 export function EntityCard({
   entity,
@@ -20,15 +21,26 @@ export function EntityCard({
       selected={selected}
       onClick={onClick}
       image={entity.image}
-      imageClassName={'object-contain h-full w-full'}
-      className={`bg-[#1f74c12b] border-[1px] border-opacity-10 rounded-l w-72 sm:w-64 md:w-80 lg:w-64 border-2 border-blue-100 cursor-pointer hover:scale-105 transition-all scroll-snap-align-center ${selectedStyles}`}
+      imageClassName={'object-cover h-full w-full'}
+      className={`bg-[#1f74c12b] border-[1px] border-opacity-10 rounded-l w-72 sm:w-64 md:w-80 lg:w-64 border-2 border-blue-100 cursor-pointer hover:scale-105 transition-all scroll-snap-align-center ${selectedStyles} relative`}
       details={[
-        <dl data-testid={'description-list'} key={entity.id} className={'p-4'}>
+        <dl
+          data-testid={'description-list'}
+          key={entity.id}
+          className={`p-4 absolute glass w-full bottom-0 sm:bottom-auto sm:top-0 ${selected ? 'h-full' : ''} transition-all`}
+        >
           <dd data-testid={'description-item'} className={'text-xl text-amber-100'}>
             {entity.name}
           </dd>
-          <dd className={'text-amber-50'}>{entity.species}</dd>
           <dd className={'text-amber-50'}>{distance} km</dd>
+          {selected && (
+            <div className={'text-amber-50 mt-2'}>
+              <DescriptionItem title={'Born'} description={entity.born} />
+              <DescriptionItem title={'Homeworld'} description={entity.homeworld || 'unknown'} />
+              <DescriptionItem title={'Cybernetics'} description={entity.cybernetics || 'unknown'} />
+              <DescriptionItem title={'Height'} description={entity.height || 'unknown'} />
+            </div>
+          )}
         </dl>,
       ]}
     />

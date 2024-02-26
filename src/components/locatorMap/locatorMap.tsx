@@ -30,7 +30,7 @@ export function LocatorMap() {
   return (
     <MapContainer
       id={'map'}
-      className={'h-80 sm:h-[40vh] md:h-[40vh] lg:h-[60vh] w-full'}
+      className={'h-[50%] sm:h-[50%] md:h-[50%] lg:h-[50%] w-full'}
       center={MAP_CONFIG.center}
       scrollWheelZoom={MAP_CONFIG.scrollWheelZoom}
       zoom={MAP_CONFIG.zoom}

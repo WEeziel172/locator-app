@@ -6,7 +6,7 @@ export function Dashboard() {
     userLocation: state.userLocation,
   }));
 
-  return <div className={'h-full sm:h-[100%] border-t-[1px] border-[#ffffff2e]'}>{userLocation && <EntityList />}</div>;
+  return <div className={'h-[50%] sm:h-[50%] border-t-[1px] border-[#ffffff2e]'}>{userLocation && <EntityList />}</div>;
 }
 
 export default Dashboard;
