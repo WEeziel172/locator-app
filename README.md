@@ -94,3 +94,7 @@ export default {
 Targeting Scope by Jamison Wieser
 from <a href="https://thenounproject.com/browse/icons/term/targeting-scope/" target="_blank" title="Targeting Scope Icons">
 Noun Project</a> (CC BY 3.0)
+
+Light Saber by iconoci
+from <a href="https://thenounproject.com/browse/icons/term/light-saber/" target="_blank" title="Light Saber Icons">Noun
+Project</a> (CC BY 3.0)

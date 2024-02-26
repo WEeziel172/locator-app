@@ -7,9 +7,10 @@ import { useEntityStore } from '@stores/entityStore.ts';
 import { useMemo, useState } from 'react';
 
 export function LocatorMap() {
-  const { entities, setEntity } = useEntityStore((state) => ({
+  const { entities, setEntity, currentEntity } = useEntityStore((state) => ({
     entities: state.entities,
     setEntity: state.setEntity,
+    currentEntity: state.currentEntity,
   }));
 
   const [currentSelectedMarker, setCurrentSelectedMarker] = useState<number | null>(null);
@@ -37,7 +38,7 @@ export function LocatorMap() {
     >
       <MapInstanceController />
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      <EntityMarkers onClick={handleOnClickMarker} />
+      <EntityMarkers currentSelected={currentEntity?.id ?? null} onClick={handleOnClickMarker} />
       <UserLocationMarker />
     </MapContainer>
   );
