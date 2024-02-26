@@ -1,11 +1,17 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { EntityService } from '@services/apiService/entityService.ts';
 import { EntityLocation } from '@customTypes//location.ts';
 import { EntityWithLocation } from '@customTypes/entityWithLocation.ts';
 import { AxiosError } from 'axios';
 import { useLocations } from '@hooks/useLocations/useLocations.ts';
 
-export function useEntities() {
+interface UseEntitiesParams {
+  onCompleted?: () => void;
+  onError?: (err: AxiosError) => void;
+  onSuccess?: (data: EntityWithLocation[]) => void;
+}
+
+export function useEntities(options?: UseEntitiesParams) {
   const entityService = new EntityService();
   const { locations } = useLocations();
   const [loading, setLoading] = useState<boolean>(false);
@@ -27,17 +33,26 @@ export function useEntities() {
     return entitiesList;
   }
 
-  useMemo(() => {
+  useEffect(() => {
     if (!locations) return;
     try {
       setLoading(true);
       getEntities(locations).then((d) => {
         setEntities(d!);
+        if (options?.onSuccess) {
+          options?.onSuccess(d!);
+        }
       });
     } catch (err) {
       setError(err as AxiosError);
+      if (options?.onError) {
+        options?.onError(err as AxiosError);
+      }
     } finally {
       setLoading(false);
+      if (options?.onCompleted) {
+        options?.onCompleted();
+      }
     }
   }, [locations]);
 

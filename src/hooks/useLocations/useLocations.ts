@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { EntityLocation } from '@customTypes//location.ts';
+import { EntityLocation } from '@customTypes/location.ts';
 import { AxiosError } from 'axios';
 import SecretService from '@services/secretService/secretService.ts';
 

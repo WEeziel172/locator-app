@@ -2,31 +2,31 @@
   "compilerOptions": {
     "paths": {
       "@components/*": [
-        "src/components/**/*"
+        "./src/components/*"
       ],
       "@services/*": [
-        "src/services/*"
+        "./src/services/*"
       ],
       "@hooks/*": [
-        "src/hooks/*"
+        "./src/hooks/*"
       ],
       "@pages/*": [
-        "src/pages/*"
+        "./src/pages/*"
       ],
       "@stores/*": [
-        "src/stores/*"
+        "./src/stores/*"
       ],
       "@customTypes/*": [
-        "src/types/*"
+        "./src/types/*"
       ],
       "@constants": [
-        "src/constants.ts"
+        "./src/constants.ts"
       ],
       "@assets/*": [
-        "src/assets/*"
+        "./src/assets/*"
       ],
       "@config": [
-        "src/config.ts"
+        "./src/config.ts"
       ]
     },
     "target": "ES2020",
@@ -47,8 +47,8 @@
     "jsx": "react-jsx",
     /* Linting */
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true
   },
   "include": [
