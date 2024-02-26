@@ -26,7 +26,7 @@ export function EntityList() {
       const itemIndex = entities?.findIndex((x) => x.id === currentEntity.id);
       if (!itemIndex) return;
 
-      //@ts-expect-error
+      // @ts-expect-error
       // Cant access all properties
       listRef.current?.children?.item(itemIndex).scrollIntoView({
         behavior: 'auto',
