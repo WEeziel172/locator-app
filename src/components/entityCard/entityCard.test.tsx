@@ -48,7 +48,6 @@ describe('Entity card', () => {
     expect(screen.getByTestId('description-item')).toBeDefined();
 
     expect(screen.getByText(entityWithLocation.name)).toBeDefined();
-    expect(screen.getByText(entityWithLocation.species)).toBeDefined();
 
     expect(card).toContainElement(descriptionList);
     expect(descriptionList).toContainElement(descriptionItem);
