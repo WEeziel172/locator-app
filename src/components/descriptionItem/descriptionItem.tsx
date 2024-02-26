@@ -12,7 +12,7 @@ export function DescriptionItem({
       <dt data-testid={'description-item'} className={'font-bold text-sm'}>
         {title}
       </dt>
-      <dd className={'ml-4 tex-xs'}>{description}</dd>
+      <dd className={'ml-4 text-xs'}>{description}</dd>
     </>
   );
 }
