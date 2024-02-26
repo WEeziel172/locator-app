@@ -9,18 +9,32 @@ export function useLocations() {
   const [error, setError] = useState<AxiosError | null>(null);
   const secretService = new SecretService();
 
-  useEffect(() => {
-    try {
-      setLoading(() => true);
-      void secretService.exposeSecretLocations().then((secretLocations) => {
-        setLocations(secretLocations);
-      });
-    } catch (err) {
-      setError(() => err as AxiosError);
-    } finally {
-      setLoading(() => false);
-    }
+  function handleOnSuccess(secretLocations: EntityLocation[]) {
+    setLocations(secretLocations);
+  }
 
+  function handleOnError(err: AxiosError) {
+    setError(err);
+  }
+
+  function handleOnCompleted() {
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    setError(() => null);
+    setLoading(true);
+    void secretService
+      .exposeSecretLocations()
+      .then((secretLocations) => {
+        handleOnSuccess(secretLocations);
+      })
+      .catch((err: AxiosError) => {
+        handleOnError(err);
+      })
+      .finally(() => {
+        handleOnCompleted();
+      });
     return () => setLocations(null);
   }, []);
 

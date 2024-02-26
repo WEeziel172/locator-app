@@ -1,7 +1,17 @@
-export function DescriptionItem({ title, description }: { title: string | number; description: string | number }) {
+export function DescriptionItem({
+  title,
+  description,
+  className,
+}: {
+  title: string | number;
+  description: string | number;
+  className?: string;
+}) {
   return (
     <>
-      <dt className={'font-bold'}>{title}</dt>
+      <dt data-testid={'description-item'} className={'font-bold'}>
+        {title}
+      </dt>
       <dd className={'ml-4'}>{description}</dd>
     </>
   );

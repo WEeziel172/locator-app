@@ -81,7 +81,7 @@ export function EntityList() {
   if (loading) {
     return (
       <div className={'flex justify-center items-center w-full h-full'}>
-        <img src={TargetingScope} className={'h-48 w-48 animate-pulse'} />
+        <img src={TargetingScope} className={'h-64 w-48 animate-pulse'} />
       </div>
     );
   }

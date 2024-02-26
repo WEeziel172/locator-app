@@ -14,7 +14,7 @@ export function Card({
   imageClassName?: string;
 }) {
   return (
-    <div onClick={onClick} className={className}>
+    <div data-testid={'card'} onClick={onClick} className={className}>
       <div className={'w-full h-52'}>
         <img loading={'lazy'} src={image} className={imageClassName} />
       </div>
