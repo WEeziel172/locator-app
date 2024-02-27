@@ -23,6 +23,115 @@ decisions on the structure of the project will always pay off.
 - Good use of useCallbacks and useMemo for performance optimization
 - Zustand for state management. Better and more performance alternative for Context
 
+### Project structure
+
+#### Assets
+
+All the assets. (images, icons etc)
+
+Alias
+``
+@assets
+``
+
+#### Components
+
+All components. Right now, even scoped components are in the components folder.
+Could be refactored later on to be common components and scoped components. (Scoped components being components that are
+only specific to certain page for example, not reusable)
+Each component has its own respective folder. Folder should consist of component, accompanying test and possible style
+file.
+Alias
+``
+@components
+``
+
+#### Hooks
+
+All hooks.
+Each hook has its own directory. Directory will have the hook itself, and accompanying test file.
+
+Alias
+``
+@hooks
+``
+
+#### i18n (Translation)
+
+All files regarding i18n (translation framework).
+
+``
+To add a new translations, add a new folder for the respective language, a json file name "translation" inside of it.
+Add the new language as a translation entry to config.ts inside the i18n folder.
+``
+
+#### Pages
+
+All pages of the application.
+Pages are top level components, and should be used mainly by the router.
+
+Alias
+``
+@pages
+``
+
+#### Servies
+
+All services of the application.
+Serviecs are meant to be a way to interface with different APIS.
+Each service has its own directory, which has the service itself and possible accompanying test.
+
+Alias
+``
+@services
+``
+
+#### Stores
+
+All Zustand stores of the application.
+Zustand stores are a better alternative comparing to react context for state management throughout the application.
+Each store should clearly have its own purpose, name should indicate the purpose of the store.
+
+Alias
+``
+@stores
+``
+
+#### Tests
+
+Configuration related to tests.
+
+#### Types
+
+All types that are exposed in the application.
+Any types created should be added to the types folder, instead leaving them inside cluttered throughout the application.
+
+Alias
+``
+@customTypes
+``
+
+#### Constants
+
+To mitigate magic strings and numbers, constants file should used for constants that might be used throughout the
+application.
+For example, routes are declared here.
+This way, we will have a single source of truth, which easier to manage in the long run.
+
+Alias
+``
+@constants
+``
+
+#### Config
+
+Used for configuration. For example, component configuration, environment configuration etc.
+
+Alias
+``
+@config
+``
+
 ## Stack
 
 - Vite + React
@@ -54,9 +163,33 @@ application.
 - Exchange 2D map for a 3D globe map
 -
 
-### MISC
+## Developing
 
-#### React + TypeScript + Vite
+Install all dependencies
+``
+yarn
+``
+Run development server
+
+``
+yarn dev
+``
+Build for production
+``
+yarn build
+``
+Preview production build locally
+``
+yarn preview
+``
+Run tests
+``
+yarn test
+``
+
+## MISC
+
+### React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 

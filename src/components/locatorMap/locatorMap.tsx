@@ -29,7 +29,7 @@ export function LocatorMap() {
       center={MAP_CONFIG.center}
       scrollWheelZoom={MAP_CONFIG.scrollWheelZoom}
       zoom={MAP_CONFIG.zoom}
-      preferCanvas={true}
+      preferCanvas={MAP_CONFIG.preferCanvas}
     >
       <MapInstanceController />
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
