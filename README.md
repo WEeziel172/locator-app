@@ -41,6 +41,7 @@ Could be refactored later on to be common components and scoped components. (Sco
 only specific to certain page for example, not reusable)
 Each component has its own respective folder. Folder should consist of component, accompanying test and possible style
 file.
+
 Alias
 ``
 @components
@@ -125,7 +126,8 @@ Alias
 
 #### Config
 
-Used for configuration. For example, component configuration, environment configuration etc.
+Used for configuration.
+For example, component configuration, environment configuration etc.
 
 Alias
 ``
@@ -161,31 +163,38 @@ application.
 - Soundbites of all entities
 - Simple trivia of each entity, "Where is he born? "What color lightsaber does he use?"
 - Exchange 2D map for a 3D globe map
--
 
 ## Developing
 
 Install all dependencies
-``
+
+```
 yarn
-``
+```
+
 Run development server
 
-``
+```
 yarn dev
-``
+```
+
 Build for production
-``
+
+```
 yarn build
-``
+```
+
 Preview production build locally
-``
+
+```
 yarn preview
-``
+```
+
 Run tests
-``
+
+```
 yarn test
-``
+```
 
 ## MISC
 
