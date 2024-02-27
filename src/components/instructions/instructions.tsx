@@ -16,7 +16,7 @@ export function Instructions() {
 
   if (userLocation && !currentEntity) {
     return (
-      <div className={'flex justify-center items-center absolute top-[7rem] w-full h-40'}>
+      <div className={'flex justify-center items-center absolute top-[5rem] sm:top-[7rem] w-full h-40'}>
         <div className={'glass w-96 h-auto z-[999] rounded-2xl text-amber-50 text-sm p-4 text-center'}>
           <Typewriter
             options={{
@@ -33,7 +33,7 @@ export function Instructions() {
   }
 
   return (
-    <div className={'flex justify-center items-center absolute top-[7rem] w-full h-40'}>
+    <div className={'flex justify-center items-center absolute top-[5rem] sm:top-[7rem] w-full h-40'}>
       <div className={'glass w-96 h-auto z-[999] rounded-2xl text-amber-50 text-sm p-4 text-center'}>
         <Typewriter
           options={{
